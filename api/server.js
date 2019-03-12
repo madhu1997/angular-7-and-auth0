@@ -14,9 +14,10 @@ const express = require('express'),
 
     const app = express();
     app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(cors());
     app.use('/post', postRoute);
-    const port = process.env.PORT || 4000;
+    const port = 4000;
 
     const server = app.listen(port, function(){
      console.log('Listening on port ' + port);

@@ -8,18 +8,9 @@ let Post = new Schema({
   },
   description: {
     type: String
-  },
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
-  },
-  
+  }
 },{
     collection: 'post'
 });
 
-module.exports = mongoose.model('post', Post);
+module.exports = mongoose.model('Post', Post);

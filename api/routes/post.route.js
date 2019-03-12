@@ -3,11 +3,11 @@ const app = express();
 const postRoutes = express.Router();
 
 // Require post model in our routes module
-let post = require('../models/post');
+let Post = require('../models/Post');
 
 // Defined store route
 postRoutes.route('/add').post(function (req, res) {
-  let post = new post(req.body);
+  let post = new Post(req.body);
   post.save()
     .then(post => {
       res.status(200).json({'post': 'post in added successfully'});
@@ -19,12 +19,12 @@ postRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 postRoutes.route('/').get(function (req, res) {
-    post.find(function (err, postes){
+    Post.find(function (err, posts){
     if(err){
       console.log(err);
     }
     else {
-      res.json(postes);
+      res.json(posts);
     }
   });
 });
@@ -32,14 +32,14 @@ postRoutes.route('/').get(function (req, res) {
 // Defined edit route
 postRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
-  post.findById(id, function (err, post){
+  Post.findById(id, function (err, post){
       res.json(post);
   });
 });
 
 //  Defined update route
 postRoutes.route('/update/:id').post(function (req, res) {
-    post.findById(req.params.id, function(err, next, post) {
+    Post.findById(req.params.id, function(err, next, post) {
     if (!post)
       return next(new Error('Could not load Document'));
     else {
@@ -58,7 +58,7 @@ postRoutes.route('/update/:id').post(function (req, res) {
 
 // Defined delete | remove | destroy route
 postRoutes.route('/delete/:id').get(function (req, res) {
-    post.findByIdAndRemove({_id: req.params.id}, function(err, post){
+    Post.findByIdAndRemove({_id: req.params.id}, function(err, post){
         if(err) res.json(err);
         else res.json('Successfully removed');
     });

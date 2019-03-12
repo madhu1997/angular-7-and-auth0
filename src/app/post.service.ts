@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PostService {
 
-  uri = 'http://localhost:4000/post';
+  uri = '/post';
 
   constructor(private http: HttpClient) { }
 
