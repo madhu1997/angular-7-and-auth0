@@ -11,6 +11,7 @@ import { PosteditComponent } from './postedit/postedit.component';
 import { PostlistComponent } from './postlist/postlist.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PostService } from './post.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
