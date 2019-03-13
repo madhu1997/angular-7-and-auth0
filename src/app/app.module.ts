@@ -12,6 +12,8 @@ import { PostlistComponent } from './postlist/postlist.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './post.service';
+import { PostviewComponent } from './postview/postview.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { PostService } from './post.service';
     ProfileComponent,
     PostComponent,
     PosteditComponent,
-    PostlistComponent
+    PostlistComponent,
+    PostviewComponent
   ],
   imports: [
     BrowserModule,
@@ -31,4 +34,6 @@ import { PostService } from './post.service';
   providers: [AuthService,PostService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

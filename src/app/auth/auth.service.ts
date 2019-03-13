@@ -75,7 +75,7 @@ export class AuthService {
   }
   
 
-  public renewTokens(): void {
+  /*public renewTokens(): void {
     this.auth0.checkSession({}, (err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.localLogin(authResult);
@@ -83,7 +83,7 @@ export class AuthService {
         this.logout();
       }
     });
-  }
+  }*/
 
   public logout(): void {
     // Remove tokens and expiry time

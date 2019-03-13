@@ -12,9 +12,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (localStorage.getItem('isLoggedIn') === 'true') {
+    /*if (localStorage.getItem('isLoggedIn') === 'true') {
       this.auth.renewTokens();
-    }
+    }*/
   }
 
 }

@@ -8,7 +8,12 @@ let Post = new Schema({
   },
   description: {
     type: String
+  },
+  updated_at: {
+    type:Date,
+    default: Date.now
   }
+  
 },{
     collection: 'post'
 });
