@@ -23,8 +23,9 @@ const express = require('express'),
         next();
     })
 
-    //app.use(cors());
+    app.use(cors());
     app.use('/post', postRoute);
+    app.use('/comment',commentRoute);
     
     const port = 4000;
     const server = app.listen(port, function(){
