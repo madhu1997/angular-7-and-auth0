@@ -20,4 +20,9 @@ export class CommentlistComponent implements OnInit {
           this.comments = data;
       });
   }
+  deleteComment(id) {
+    this.ps.deleteComment(id).subscribe(res => {
+      console.log('Deleted');
+    });
+  }
 }
