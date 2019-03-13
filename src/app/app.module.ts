@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PostService } from './post.service';
 import { PostviewComponent } from './postview/postview.component';
+import { CommentComponent } from './comment/comment.component';
+import { CommenteditComponent } from './commentedit/commentedit.component';
+import { CommentlistComponent } from './commentlist/commentlist.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { PostviewComponent } from './postview/postview.component';
     PostComponent,
     PosteditComponent,
     PostlistComponent,
-    PostviewComponent
+    PostviewComponent,
+    CommentComponent,
+    CommenteditComponent,
+    CommentlistComponent
   ],
   imports: [
     BrowserModule,
