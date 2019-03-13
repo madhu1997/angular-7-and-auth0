@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { CommentService } from '../comment.service';
 
 @Component({
   selector: 'app-commentedit',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommenteditComponent implements OnInit {
 
-  constructor() { }
+  comment: any = {};
+  angForm: FormGroup;
+
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private ps: CommentService,
+    private fb: FormBuilder) {
+      this.createForm();
+ }
+
+  createForm() {
+    this.angForm = this.fb.group({
+        title: ['', Validators.required ],
+        description: ['', Validators.required ],
+      });
+    }
+
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+        this.ps.editComment(params['id']).subscribe(res => {
+          this.comment = res;
+      });
+    });
   }
-
+  updateComment(comment) {
+    this.route.params.subscribe(params => {
+      this.ps.updateComment(comment, params['id']);
+      this.router.navigate(['comment']);
+    });
+  }
 }

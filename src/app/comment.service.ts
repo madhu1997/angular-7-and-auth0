@@ -22,4 +22,19 @@ export class CommentService {
            .http
            .get(`${this.uri}`);
   }
+  editComment(id) {
+    return this
+            .http
+            .get(`${this.uri}/edit/${id}`);
+    }
+  updateComment(comment, id) {
+
+    const obj = {
+        comment: comment
+      };
+    this
+      .http
+      .post(`${this.uri}/update/${id}`, obj)
+      .subscribe(res => console.log('Done'));
+  }
 }
