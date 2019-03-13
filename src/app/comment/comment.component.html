@@ -1,3 +1,20 @@
-<p>
-  comment works!
-</p>
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Comment</label>
+          <input type="text" class="form-control" formControlName="comment" #comment />
+        </div>
+        <div *ngIf="angForm.controls['comment'].invalid && (angForm.controls['comment'].dirty || angForm.controls['comment'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['comment'].errors.required">
+            Comment is required.
+          </div>
+        <div class="form-group">
+          <button (click)="addComment(comment)"type="submit" 
+          [disabled]="angForm.pristine || angForm.invalid" 
+          class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
