@@ -17,4 +17,9 @@ export class CommentService {
     this.http.post(`${this.uri}/add`, obj)
         .subscribe(res => console.log('Done'));
   }
+  getComments() {
+    return this
+           .http
+           .get(`${this.uri}`);
+  }
 }

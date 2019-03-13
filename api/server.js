@@ -6,6 +6,7 @@ const express = require('express'),
     config = require('./DB');
 
     const postRoute = require('./routes/post.route');
+    const commentRoute = require('./routes/comment.route');
     mongoose.Promise = global.Promise;
     mongoose.connect(config.DB, { useNewUrlParser: true }).then(
       () => {console.log('Database is connected') },

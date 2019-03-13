@@ -16,6 +16,7 @@ import { PostviewComponent } from './postview/postview.component';
 import { CommentComponent } from './comment/comment.component';
 import { CommenteditComponent } from './commentedit/commentedit.component';
 import { CommentlistComponent } from './commentlist/commentlist.component';
+import { CommentService } from './comment.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { CommentlistComponent } from './commentlist/commentlist.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService,PostService],
+  providers: [AuthService,PostService,CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
