@@ -20,4 +20,9 @@ export class PostlistComponent implements OnInit {
           this.posts = data;
       });
   }
+  deletePost(id) {
+    this.ps.deletePost(id).subscribe(res => {
+      console.log('Deleted');
+    });
+  }
 }

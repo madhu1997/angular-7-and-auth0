@@ -30,5 +30,22 @@ export class PostService {
             .http
             .get(`${this.uri}/edit/${id}`);
     }
+  updatePost(title, description, id) {
+
+    const obj = {
+        title: title,
+        description: description,
+      };
+    this
+      .http
+      .post(`${this.uri}/update/${id}`, obj)
+      .subscribe(res => console.log('Done'));
+  }
+
+  deletePost(id) {
+    return this
+              .http
+              .get(`${this.uri}/delete/${id}`);
+  }
 
 }
