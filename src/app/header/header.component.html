@@ -1,7 +1,8 @@
 <section>
 <ul>
-  <li><a routerLink='/postlist'>Blog</a></li>
-  <li><a *ngIf="auth.isAuthenticated()" routerLink="/postlist">My Post</a></li>
+  <li><a routerLink='/post'>Blog</a></li>
+  <li><a *ngIf="auth.isAuthenticated()" routerLink="/post">My Post</a></li>
+  <li><a *ngIf="auth.isAuthenticated()" routerLink="/post/create">Add Post</a></li>
   <li style="float: right"><a *ngIf="!auth.isAuthenticated()"(click)="auth.login()">Log In</a></li>
   <li style="float: right"><a *ngIf="auth.isAuthenticated()"(click)="auth.logout()">Log out</a></li>
   <li style="float: right"><a *ngIf="auth.isAuthenticated()" routerLink="/profile">Profile</a></li>

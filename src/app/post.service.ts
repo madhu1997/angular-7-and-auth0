@@ -26,6 +26,11 @@ export class PostService {
            .http
            .get(`${this.uri}`);
   }
+  getPost(id) {
+    return this
+           .http
+           .get(`${this.uri}/get/${id}`);
+  }
   editPost(id) {
     return this
             .http
@@ -35,8 +40,10 @@ export class PostService {
 
     const obj = {
         title: title,
-        description: description,
+        description: description
       };
+      console.log(obj);
+      debugger;
     this
       .http
       .post(`${this.uri}/update/${id}`, obj)

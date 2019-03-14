@@ -11,16 +11,16 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4">Description </label>
-          <input type="text" class="form-control" formControlName="description" #Post [(ngModel)] = "post.description" />
-        </div>
-        <div *ngIf="angForm.controls['description'].invalid && (angForm.controls['description'].dirty || angForm.controls['description'].touched)" class="alert alert-danger">
-          <div *ngIf="angForm.controls['description'].errors.required">
-            Description is required.
+            <label class="col-md-4">Description</label>
+            <textarea type="text" class="form-control" formControlName="description" #description [(ngModel)] = "post.description" ></textarea>
           </div>
-        </div>
+          <div *ngIf="angForm.controls['description'].invalid && (angForm.controls['description'].dirty || angForm.controls['description'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['description'].errors.required">
+              Description is required.
+            </div>
+          </div>
         <div class="form-group">
-          <button (click)="updatePost(title.value, description.value)"
+          <button (click)="updatePost(title,description)"
           [disabled]="angForm.invalid" 
           class="btn btn-primary">Update Post</button>
         </div>

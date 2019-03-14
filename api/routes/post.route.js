@@ -30,6 +30,12 @@ postRoutes.route('/').get(function (req, res) {
     }
   });
 });
+postRoutes.route('/get/:id').get(function (req, res) {
+  let id = req.params.id;
+  Post.findById(id, function (err, post){
+      res.json(post);
+});
+});
 
 // Defined edit route
 postRoutes.route('/edit/:id').get(function (req, res) {
@@ -41,7 +47,7 @@ postRoutes.route('/edit/:id').get(function (req, res) {
 
 //  Defined update route
 postRoutes.route('/update/:id').post(function (req, res) {
-    Post.findById(req.params.id, function(err, next, post) {
+    Post.findById(req.params.id, function(err,post,next) {
     if (!post)
       return next(new Error('Could not load Document'));
     else {

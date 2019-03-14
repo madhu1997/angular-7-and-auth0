@@ -1,25 +1,42 @@
-<button type="button" routerLink="/post">Create Post</button>
-<button type="button" routerLink="/comment">Comment</button>
+<!--<button type="button" routerLink="/post">Create Post</button>
+<button type="button" routerLink="/comment">Comment</button>-->
+<!--<table class="table table-hover">
+  <thead>
+  <tr>
+      <td>Title </td>
+      <td>Description</td>
+      <td>Updated_at</td>
+      <td colspan="2">Actions</td>
+  </tr>
+  </thead>
+
+  <tbody>
+      <tr *ngFor="let post of posts">
+          <td>{{ post.title }}</td>
+          <td>{{ post.description }}</td>
+          <td>{{ post.updated_at }}</td>
+          <td><a [routerLink]="['edit', post._id]" class="btn btn-primary">Edit</a></td>
+          <td><a (click) = "deletePost(post._id)" class="btn btn-danger">Delete</a></td>
+      </tr>
+  </tbody>
+</table>-->
 <section>
     <div class="page-header">
-      <h1>Posts</h1>
+    <h1>Posts</h1>
     </div>
     <div class="list-group">
-      <a ng-repeat="post in vm.posts"
-         routerLink="/postview"
-         class="list-group-item">
-         <h2><span ng-if="post.title" ng-bind="post.title"></span></h2>
-        <small class="list-group-item-text">
-          Posted on
-          <span ng-bind="post.created | date:'mediumDate'"></span>
-          by
-          <span ng-if="post.user" ng-bind="post.user.displayName"></span>
-          <span ng-if="!post.user">Deleted User</span>
-        </small>
-        <h4 class="list-group-item-heading" ng-bind="post.Title"></h4>
-      </a>
+    <a *ngFor="let post of posts"
+       [routerLink]="['get/',post._id]"
+       class="list-group-item">
+    <h2>{{ post.title }}</h2>
+    <small class="list-group-item-text">
+        Posted on
+        <span>{{post.updated_at  | date }}</span>
+        by
+        <span>{{ post.user }}</span>
+        <span ng-if="!post.user">Deleted User</span>
+    </small>
+    <h4 class="list-group-item-heading" ng-bind="post.Title"></h4>
+    </a>
     </div>
-    <div class="alert alert-warning text-center" ng-if="vm.posts.$resolved && !vm.posts.length">
-      No Posts yet, why don't you <a routerLink="/post">create one</a>?
-    </div>
-  </section>
+</section>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { PostService } from '../post.service';
 import Post from '../post';
 
@@ -11,7 +12,7 @@ export class PostlistComponent implements OnInit {
 
   posts: Post[];
 
-  constructor(private ps: PostService) { }
+  constructor(private ps: PostService, public Auth: AuthService) { }
 
   ngOnInit() {
     this.ps
@@ -25,4 +26,5 @@ export class PostlistComponent implements OnInit {
       console.log('Deleted');
     });
   }
+
 }
