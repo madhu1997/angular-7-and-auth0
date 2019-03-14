@@ -6,7 +6,7 @@
     </div>
     <div class="list-group">
       <a ng-repeat="post in vm.posts"
-         ui-sref="posts.view({ postId: post._id })"
+         routerLink="/postview"
          class="list-group-item">
          <h2><span ng-if="post.title" ng-bind="post.title"></span></h2>
         <small class="list-group-item-text">

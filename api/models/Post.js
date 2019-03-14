@@ -12,6 +12,10 @@ let Post = new Schema({
   updated_at: {
     type:Date,
     default: Date.now
+  },
+  created_by: {
+    type: Schema.Types.ObjectId, 
+    ref: 'users'
   }
   
 },{

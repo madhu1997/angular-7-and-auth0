@@ -20,8 +20,9 @@ export class PostComponent implements OnInit {
       description: ['', Validators.required ]
     });
   }
+
   addPost(title, description) {
-    this.ps.addPost(title, description);
+    this.ps.addPost(title.value, description.value);
   }
 
 

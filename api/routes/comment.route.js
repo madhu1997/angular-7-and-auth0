@@ -54,7 +54,7 @@ commentRoutes.route('/update/:id').post(function (req, res) {
   });
 });
 // Defined delete | remove | destroy route
-postRoutes.route('/delete/:id').get(function (req, res) {
+commentRoutes.route('/delete/:id').get(function (req, res) {
     comment.findByIdAndRemove({_id: req.params.id}, function(err, comment){
         if(err) res.json(err);
         else res.json('Successfully removed');

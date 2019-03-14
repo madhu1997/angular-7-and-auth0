@@ -17,6 +17,7 @@ export class PostService {
       title: title,
       description: description
     };
+    console.log(obj);
     this.http.post(`${this.uri}/add`, obj)
         .subscribe(res => console.log('Done'));
   }

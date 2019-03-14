@@ -15,7 +15,7 @@ export class AuthService {
     clientID: 'FM8ECs5V8C5ETJpXqqzxF78WNBe612Dl',
     domain: 'dev-wyw2s199.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:4200/profile',
+    redirectUri: 'http://localhost:4200/postlist',
     scope: 'openid profile'
   });
 

@@ -20,7 +20,7 @@ export class CommentComponent implements OnInit {
     });
   }
   addComment(comment) {
-    this.cs.addComment(comment);
+    this.cs.addComment(comment.value);
   }
 
 
