@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CommentService {
 
-  uri = 'http://localhost:4000/comment';
+  uri = 'http://localhost:4000/post/id/comment';
 
   constructor(private http: HttpClient) { }
 

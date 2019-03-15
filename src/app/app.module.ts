@@ -17,6 +17,7 @@ import { CommentComponent } from './comment/comment.component';
 import { CommenteditComponent } from './commentedit/commentedit.component';
 import { CommentlistComponent } from './commentlist/commentlist.component';
 import { CommentService } from './comment.service';
+import { CommentviewComponent } from './commentview/commentview.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CommentService } from './comment.service';
     PostviewComponent,
     CommentComponent,
     CommenteditComponent,
-    CommentlistComponent
+    CommentlistComponent,
+    CommentviewComponent
   ],
   imports: [
     BrowserModule,
