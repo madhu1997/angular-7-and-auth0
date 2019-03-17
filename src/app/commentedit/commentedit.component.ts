@@ -29,11 +29,11 @@ export class CommenteditComponent implements OnInit {
 
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    /*this.route.params.subscribe(params => {
         this.cs.editComment(params['id']).subscribe(res => {
           this.comment = res;
       });
-    });
+    });*/
   }
   updateComment(comment) {
     this.route.params.subscribe(params => {

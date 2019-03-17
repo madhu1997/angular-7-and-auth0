@@ -3,6 +3,7 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { CommentService } from '../comment.service';
 import { PostService } from '../post.service';
 import { ActivatedRoute } from '@angular/router';
+import { disableBindings } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-comment',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CommentComponent implements OnInit {
   
-  public post: string;
+  public post:any;
 
   angForm: FormGroup;
   constructor(private fb: FormBuilder, private cs: CommentService,private ps : PostService,private route: ActivatedRoute ) {
@@ -24,15 +25,13 @@ export class CommentComponent implements OnInit {
     });
   }
   addComment(comment) {
-    this.cs.addComment(comment.value);
+    this.route.params.subscribe(params => {
+      this.cs.addComment(comment.value, params['id']);
+      debugger;
+    });
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.ps.getPost(params['id']).subscribe(res => {
-        this.post = res['_id'];
-    });
-  });
   }
   }
 

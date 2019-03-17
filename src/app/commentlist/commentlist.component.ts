@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentService } from '../comment.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -9,20 +10,21 @@ import { CommentService } from '../comment.service';
 })
 export class CommentlistComponent implements OnInit {
 
-  comments: Comment[];
+  comments: any = {};;
 
-  constructor(private ps: CommentService) { }
+  constructor( private route: ActivatedRoute,
+    private router: Router,private cs: CommentService) { }
 
   ngOnInit() {
-    this.ps
-        .getComments()
-        .subscribe((data: Comment[]) => {
-          this.comments = data;
+    this.route.params.subscribe(params => {
+      this.cs.getComments(params['id']).subscribe(res => {
+        this.comments = res;
       });
-  }
-  deleteComment(id) {
-    this.ps.deleteComment(id).subscribe(res => {
+  });
+}
+  /*deleteComment(id) {
+    this.cs.deleteComment(id).subscribe(res => {
       console.log('Deleted');
     });
-  }
+  }*/
 }

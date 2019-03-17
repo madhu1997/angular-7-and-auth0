@@ -6,40 +6,40 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CommentService {
 
-  uri = 'http://localhost:4000/post/id/comment';
+  //uri = 'http://localhost:4000/post/:id/comment';
 
   constructor(private http: HttpClient) { }
 
-  addComment(comment) {
+  addComment(comment,postId) {
     const obj = {
      comment: comment
     };
-    this.http.post(`${this.uri}/add`, obj)
+    this.http.post(`http://localhost:4000/post/${postId}/comment/add`, obj)
         .subscribe(res => console.log('Done'));
   }
-  getComments() {
+  getComments(postId) {
     return this
            .http
-           .get(`${this.uri}`);
+           .get(`http://localhost:4000/post/${postId}/comment`);
   }
-  editComment(id) {
+  editComment(id,postId) {
     return this
             .http
-            .get(`${this.uri}/edit/${id}`);
+            .get(`http://localhost:4000/post/${postId}/comment/add/edit/${id}`);
     }
-  updateComment(comment, id) {
+  updateComment(comment, id,postId) {
 
     const obj = {
         comment: comment
       };
     this
       .http
-      .post(`${this.uri}/update/${id}`, obj)
+      .post(`http://localhost:4000/post/${postId}/comment/update/${id}`, obj)
       .subscribe(res => console.log('Done'));
   }
   deleteComment(id) {
     return this
               .http
-              .get(`${this.uri}/delete/${id}`);
+              //.get(`${this.uri}/delete/${id}`);
   }
 }

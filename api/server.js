@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('express-jwt');
 const jwtAuthz = require('express-jwt-authz');
+var Promise = require('promise');
 const jwksRsa = require('jwks-rsa'),
     path = require('path'),
     bodyParser = require('body-parser'),
@@ -22,22 +23,6 @@ const jwksRsa = require('jwks-rsa'),
     app.use(bodyParser.urlencoded({ extended: true }));
 
     app.use(cors());
-    /*var jwtCheck = jwt({
-      secret: jwks.expressJwtSecret({
-          cache: true,
-          rateLimit: true,
-          jwksRequestsPerMinute: 5,
-          jwksUri: "https://dev-wyw2s199.auth0.com/.well-known/jwks.json"
-      }),
-      audience: 'https://localhost:4200',
-      issuer: "https://dev-wyw2s199.auth0.com/",
-      algorithms: ['RS256']
-  });
-  app.use(jwtCheck);
-
-app.get('/authorized', function (req, res) {
-  res.send('Secured Resource');
-});
 let getAccessToken = (req, res, next) => {
 
   var AuthenticationClient = require('auth0').AuthenticationClient;
@@ -64,57 +49,54 @@ let getAccessToken = (req, res, next) => {
   });
 
 }
-api.get('/users', getAccessToken, (req, res) => {
-  let userIds = getUsersFromDB(); //Array of User IDs from MongoDB for example (to be used later)
-  console.log('Auth0 Access Token', req.auth0AccessToken);
-});
-let getUser = (accessToken, userid) => {
-  return requestPromise({
-      url: `https://dev-wyw2s199.auth0.com/api/v2/users/${userid}`,
-      headers: {
-          'authorization': `Bearer ${accessToken}`
-      }
+  app.get('api/users', getAccessToken, (req, res) => {
+   let userIds = getUsersFromDB(); //Array of User IDs from MongoDB for example (to be used later)
+    console.log('Auth0 Access Token', req.auth0AccessToken);
+    debugger;
   });
-}
 
-let getUsers = (auth0AccessToken, userIds) => {
-  return new Promise((resolve, reject) => {
+  const getPost  = function(req, res, next) {
+    //console.log('Request URL:', req.params.postId)
+    req.postId = req.params.postId;
+    next()
+  }
+ let getUser = (accessToken, userid) => {
+    return requestPromise({
+        url: `https://dev-wyw2s199.auth0.com/api/v2/users/${userid}`,
+        headers: {
+            'authorization': `Bearer ${accessToken}`
+        }
+    });
+  }
+  let getUsers = (auth0AccessToken, userIds) => {
+    return new Promise((resolve, reject) => {
 
-      let auth0UserPromises = [];
+        let auth0UserPromises = [];
 
-      userIds.forEach(userId => {
-          auth0UserPromises.push(getUser(auth0AccessToken, userId));
-      });
+        userIds.forEach(userId => {
+            auth0UserPromises.push(getUser(auth0AccessToken, userId));
+        });
 
-      //Return all promises as success, even if auth0 could not find the user
-      Promise.all(auth0UserPromises.map(p => p.catch(() => undefined))).then(auth0Users => {
-                          
-          var model = auth0Users.map(user => (
-              email:user.email,
-              username: user.username,
-              app_metadata: user.app_metadata,
-              nickname: user.nickname,
-          ));
-          resolve(model);
-      });
+        //Return all promises as success, even if auth0 could not find the user
+        Promise.all(auth0UserPromises.map(p => p.catch(() => undefined))).then(auth0Users => {
+                            
+            var model = auth0Users.map(user => (
+                email:user.email,
+                username: user.username,
+                user_metadata: user.user_metadata,
+                nickname: user.nickname,
+            ));
 
-  });
+            resolve(model);
+        });
+
+    });
 };
-api.get('/users', getAccessToken, (req, res) => {
-  let userIds = getUsersFromDB(); //Array of User IDs from MongoDB for example (to be used later)
-  
-  getUsers(req.auth0AccessToken, userIds).then(users => {
-    res.json(users);  
-  });
-  
-});*/
-
     app.use('/post', postRoute);
-    app.use('post/id/comment',commentRoute);
+    app.use('/post/:postId/comment',getPost, commentRoute);
     //app.use('/user',userRoute);
     const port = 4000;
     
     const server = app.listen(port, function(){
      console.log('Listening on port ' + port);
     });
-

@@ -8,6 +8,7 @@ let Comment = require('../models/Comment');
 // Defined store route
 commentRoutes.route('/add').post(function (req, res) {
   let comment = new Comment(req.body);
+  comment.post = req.postId;
   comment.save()
     .then(comment => {
       res.status(200).json({'comment': 'comment in added successfully'});
@@ -19,7 +20,8 @@ commentRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 commentRoutes.route('/').get(function (req, res) {
-    Comment.find(function (err, comments){
+  postId = req.postId;
+  Comment.find({post: postId}, function (err, comments){
     if(err){
       console.log(err);
       

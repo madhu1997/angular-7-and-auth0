@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { CommentService } from '../comment.service';
 @Component({
   selector: 'app-postview',
   templateUrl: './postview.component.html',
@@ -11,7 +12,7 @@ export class PostviewComponent implements OnInit {
   post: any = {};
   postId: string;
   
-  constructor(private auth: AuthService, private router: Router,private ps: PostService,private route: ActivatedRoute) { 
+  constructor(private auth: AuthService, private router: Router,private ps: PostService,private route: ActivatedRoute,private cs: CommentService) { 
     auth.handleAuthentication();
   }
 
@@ -28,6 +29,11 @@ export class PostviewComponent implements OnInit {
     this.ps.deletePost(id).subscribe(res => {
       console.log('Deleted');
       this.router.navigate(['post']);
+    });
+  }
+  /*deleteComment(id) {
+    this.cs.deleteComment(id).subscribe(res => {
+      console.log('Deleted');
     });
   }
   /*public isAuthenticated(): boolean {

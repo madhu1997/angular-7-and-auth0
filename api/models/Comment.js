@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Business
 let Comment = new Schema({
-    postId:{
+    post: {
         type: Schema.Types.ObjectId, 
         ref: 'Post'
     },

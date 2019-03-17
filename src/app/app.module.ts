@@ -18,6 +18,7 @@ import { CommenteditComponent } from './commentedit/commentedit.component';
 import { CommentlistComponent } from './commentlist/commentlist.component';
 import { CommentService } from './comment.service';
 import { CommentviewComponent } from './commentview/commentview.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { CommentviewComponent } from './commentview/commentview.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService,PostService,CommentService],
   bootstrap: [AppComponent]

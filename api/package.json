@@ -16,6 +16,7 @@
     "express-jwt": "^5.3.1",
     "express-jwt-authz": "^2.1.1",
     "jwks-rsa": "^1.4.0",
-    "mongoose": "^5.4.19"
+    "mongoose": "^5.4.19",
+    "promise": "^8.0.2"
   }
 }
