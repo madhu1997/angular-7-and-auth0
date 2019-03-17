@@ -60,39 +60,17 @@ let getAccessToken = (req, res, next) => {
     req.postId = req.params.postId;
     next()
   }
- let getUser = (accessToken, userid) => {
-    return requestPromise({
-        url: `https://dev-wyw2s199.auth0.com/api/v2/users/${userid}`,
-        headers: {
-            'authorization': `Bearer ${accessToken}`
-        }
-    });
+
+  const handleUser = function(req, res, next) {
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    if (req.headers.authorization) {
+      var token = req.headers.authorization.split(" ")[1];
+      console.log(token);
+    }
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    next();
   }
-  let getUsers = (auth0AccessToken, userIds) => {
-    return new Promise((resolve, reject) => {
-
-        let auth0UserPromises = [];
-
-        userIds.forEach(userId => {
-            auth0UserPromises.push(getUser(auth0AccessToken, userId));
-        });
-
-        //Return all promises as success, even if auth0 could not find the user
-        Promise.all(auth0UserPromises.map(p => p.catch(() => undefined))).then(auth0Users => {
-                            
-            var model = auth0Users.map(user => (
-                email:user.email,
-                username: user.username,
-                user_metadata: user.user_metadata,
-                nickname: user.nickname,
-            ));
-
-            resolve(model);
-        });
-
-    });
-};
-    app.use('/post', postRoute);
+    app.use('/post', handleUser, postRoute);
     app.use('/post/:postId/comment',getPost, commentRoute);
     //app.use('/user',userRoute);
     const port = 4000;

@@ -13,11 +13,9 @@ let Post = new Schema({
     type:Date,
     default: Date.now
   },
-  created_by: {
-    type: Schema.Types.ObjectId, 
-    ref: 'users'
+  created_by_id: {
+    type: String, 
   }
-  
 },{
     collection: 'post'
 });

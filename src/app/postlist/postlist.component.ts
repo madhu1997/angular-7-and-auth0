@@ -12,7 +12,7 @@ export class PostlistComponent implements OnInit {
 
   posts: Post[];
 
-  constructor(private ps: PostService, public Auth: AuthService) { }
+  constructor(private ps: PostService, public auth: AuthService) { }
 
   ngOnInit() {
     this.ps
@@ -20,6 +20,10 @@ export class PostlistComponent implements OnInit {
         .subscribe((data: Post[]) => {
           this.posts = data;
       });
+  }
+
+  isLoggedIn(): boolean {
+    return this.auth.isAuthenticated();
   }
   
 
