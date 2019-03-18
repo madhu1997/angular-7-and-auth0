@@ -19,7 +19,7 @@ import { CommentlistComponent } from './commentlist/commentlist.component';
 import { CommentService } from './comment.service';
 import { CommentviewComponent } from './commentview/commentview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatExpansionModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [AuthService,PostService,CommentService],
   bootstrap: [AppComponent]
