@@ -70,7 +70,7 @@ const jwksRsa = require('jwks-rsa'),
     if (req.headers.authorization) {
       var token = req.headers.authorization.split(" ")[1];
     
-      console.log(token);
+     // console.log(token);
     }
     //console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     next();
