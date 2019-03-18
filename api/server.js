@@ -91,12 +91,33 @@ const jwksRsa = require('jwks-rsa'),
     issuer: `https://dev-wyw2s199.auth0.com/`,
     algorithms: ['RS256']
   });
-
-
-  app.get('api/users', checkJwt, (req, res) => {
+  const Jwt= checkJwt;
+  console.log(Jwt);
+  /*app.get('api/users', checkJwt, (req, res) => {
     let userIds = getUsersFromDB(); //Array of User IDs from MongoDB for example (to be used later)
     console.log('Auth0 Access Token', req.auth0AccessToken);
+});*/
+/*var AuthenticationClient = require('auth0').AuthenticationClient;
+
+var auth0 = new AuthenticationClient({
+  domain: 'https://dev-wyw2s199.auth0.com/',
+  clientId: 'FM8ECs5V8C5ETJpXqqzxF78WNBe612Dl',
+  clientSecret: 'VTFIDmRxrZPl8h1Zt0H_mYrP4WRV2ITk0Vb0xUsDOYvhQyyJ3jKX_igb4Z8FpdC4'
 });
+
+
+const access_token = checkJwt;
+
+//console.log("ACCESSTOKEN:", access_token)
+
+auth0.getProfile(access_token, function (err, userInfo) {
+    if(err) {
+        console.log("failed to retrieve profile", err)
+    } else {
+        const userId = JSON.parse(userInfo)['sub'];
+        console.log(userId);
+    }
+});*/
 
 /*let getUser = (accessToken, userid) => {
   return requestPromise({
