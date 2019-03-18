@@ -27,6 +27,7 @@ export class CommentComponent implements OnInit {
   addComment(comment) {
     this.route.params.subscribe(params => {
       this.cs.addComment(comment.value, params['id']);
+      this.angForm.reset();
       debugger;
     });
   }

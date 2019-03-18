@@ -53,22 +53,20 @@ const handleUser = function(req, res, next) {
  }
 
 
- /*var AuthenticationClient = require('auth0').AuthenticationClient;
+/* var AuthenticationClient = require('auth0').AuthenticationClient;
 
  var auth0 = new AuthenticationClient({
-   domain: '{TENANT}.auth0.com',
-   clientId: '{client id}'
+   domain: 'dev-wyw2s199.auth0.com',
+   clientId: 'FM8ECs5V8C5ETJpXqqzxF78WNBe612Dl'
  });
  
- const accessToken = '{access token}';
+ const accessToken = checkJwt;
  
  auth0.getProfile(accessToken, function (err, userInfo) {
    const userId = JSON.parse(userInfo)['sub'];
    console.log(userId);
- });
- */
-
-    app.use('/post',checkJwt, handleUser, postRoute);
+ });*/
+    app.use('/post', handleUser, postRoute);
     app.use('/post/:postId/comment',getPost, commentRoute);
     //app.use('/user',userRoute);
     const port = 4000;

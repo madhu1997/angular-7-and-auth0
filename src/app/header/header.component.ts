@@ -7,14 +7,21 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  profile: any;
+
   constructor(public auth: AuthService) {
     auth.handleAuthentication();
   }
 
   ngOnInit() {
-    /*if (localStorage.getItem('isLoggedIn') === 'true') {
-      this.auth.renewTokens();
-    }*/
+    if (this.auth.userProfile) {
+      this.profile = this.auth.userProfile;
+    } else {
+      this.auth.getProfile((err, profile) => {
+        this.profile = profile;
+      });
+    }
   }
 
 }

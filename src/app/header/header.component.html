@@ -5,6 +5,6 @@
   <li><a *ngIf="auth.isAuthenticated()" routerLink="/post/create">Add Post</a></li>
   <li style="float: right"><a *ngIf="!auth.isAuthenticated()"(click)="auth.login()">Log In</a></li>
   <li style="float: right"><a *ngIf="auth.isAuthenticated()"(click)="auth.logout()">Log out</a></li>
-  <li style="float: right"><a *ngIf="auth.isAuthenticated()" routerLink="/profile">Profile</a></li>
+  <li style="float: right"><a class="nickname" *ngIf="auth.isAuthenticated()" routerLink="/profile">{{ profile.nickname }}</a></li>
 </ul>
 </section>
