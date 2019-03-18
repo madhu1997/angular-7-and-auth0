@@ -16,7 +16,8 @@ export class AuthService {
     domain: 'dev-wyw2s199.auth0.com',
     responseType: 'token id_token',
     redirectUri: 'http://localhost:4200/post',
-    scope: 'openid profile'
+    scope: 'openid profile',
+    audience: 'https://localhost:4200/api'
   });
 
   constructor(public router: Router) {
