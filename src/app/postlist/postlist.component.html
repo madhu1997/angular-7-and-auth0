@@ -34,7 +34,7 @@
         <span>{{post.updated_at  | date }}</span>
         by
         <span>{{ post.user }}</span>
-        <span ng-if="!post.user">Deleted User</span>
+        <span ng-if="!post.user"> {{ post.created_by_id }}</span>
     </small>
     <h4 class="list-group-item-heading" ng-bind="post.Title"></h4>
     </a>

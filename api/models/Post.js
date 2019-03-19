@@ -20,4 +20,8 @@ let Post = new Schema({
     collection: 'post'
 });
 
+Post.methods.created_by = function(params) {
+  console.log(params);
+}
+
 module.exports = mongoose.model('Post', Post);

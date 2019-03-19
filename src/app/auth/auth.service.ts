@@ -59,11 +59,12 @@ export class AuthService {
     this._accessToken = authResult.accessToken;
     this._idToken = authResult.idToken;
     this._expiresAt = expiresAt;
+    //debugger;
   }
 
   public getProfile(cb): void {
     if (!this._accessToken) {
-      throw new Error('Access Token must exist to fetch profile');
+      //throw new Error('Access Token must exist to fetch profile');
     }
   
     const self = this;

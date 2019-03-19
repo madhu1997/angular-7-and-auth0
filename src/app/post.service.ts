@@ -36,6 +36,7 @@ export class PostService {
     
     this.http.post(`${this.uri}/add`, obj, httpOptions)
     .subscribe(res => console.log('Done'));
+    debugger;
   }
   
   getPosts() {
