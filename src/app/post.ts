@@ -1,8 +1,6 @@
-export class Post {
-  constructor (
-    public title: String,
-    public description: String,
-    public created_by: string,
-    public updated_at: string,
-  ) {}
+export default class Post {
+    title: String;
+    description: String;
+    created_by: string;
+    updated_at: string;
   }

@@ -30,16 +30,17 @@ const jwksRsa = require('jwks-rsa'),
   }
 
  const checkJwt = jwt({
-    secret: jwksRsa.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: "https://dev-wyw2s199.auth0.com/.well-known/jwks.json"
-    }),
-    audience: 'https://localhost:4200/api',
-    issuer: "https://dev-wyw2s199.auth0.com/",
-    algorithms: ['RS256']
-  });
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: "https://dev-wyw2s199.auth0.com/.well-known/jwks.json"
+}),
+audience: 'https://localhost:4200/api',
+issuer: "https://dev-wyw2s199.auth0.com/",
+algorithms: ['RS256']
+});
+
   
 const handleUser = function(req, res, next) {
   console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
@@ -52,21 +53,14 @@ const handleUser = function(req, res, next) {
    next();
  }
 
+ const checkScopes = jwtAuthz([ 'read:users' ]);
 
-/* var AuthenticationClient = require('auth0').AuthenticationClient;
+ /*app.get('/users', handleUser, (req, res) => {
+  let userIds = getUsersFromDB(); //Array of User IDs from MongoDB for example (to be used later)
+  console.log('Auth0 Access Token', req.auth0AccessToken);
+});*/
 
- var auth0 = new AuthenticationClient({
-   domain: 'dev-wyw2s199.auth0.com',
-   clientId: 'FM8ECs5V8C5ETJpXqqzxF78WNBe612Dl'
- });
- 
- const accessToken = checkJwt;
- 
- auth0.getProfile(accessToken, function (err, userInfo) {
-   const userId = JSON.parse(userInfo)['sub'];
-   console.log(userId);
- });*/
-    app.use('/post', handleUser, postRoute);
+    app.use('/post',checkJwt,checkScopes,handleUser, postRoute);
     app.use('/post/:postId/comment',getPost, commentRoute);
     //app.use('/user',userRoute);
     const port = 4000;
