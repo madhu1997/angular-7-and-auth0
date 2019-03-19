@@ -20,6 +20,7 @@ import { CommentService } from './comment.service';
 import { CommentviewComponent } from './commentview/commentview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material';
+import { MypostComponent } from './mypost/mypost.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatExpansionModule } from '@angular/material';
     CommentComponent,
     CommenteditComponent,
     CommentlistComponent,
-    CommentviewComponent
+    CommentviewComponent,
+    MypostComponent
   ],
   imports: [
     BrowserModule,

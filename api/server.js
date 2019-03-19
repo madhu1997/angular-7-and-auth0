@@ -13,6 +13,12 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
   () => {console.log('Database is connected') },
   err => { console.log('Can not connect to the database'+ err)}
   );
+
+  const getPost  = function(req, res, next) {
+    //console.log('Request URL:', req.params.postId)
+    req.postId = req.params.postId;
+    next()
+  }  
   
   
   
@@ -22,11 +28,7 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
   
   app.use(cors());
   
-  const getPost  = function(req, res, next) {
-    //console.log('Request URL:', req.params.postId)
-    req.postId = req.params.postId;
-    next()
-  }  
+  
   //const checkScopes = jwtAuthz([ 'read:users' ]);
   
   /*auth0.userInfo( handleUser, (req, res) => {
@@ -34,7 +36,7 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
   });*/
   
   app.use('/post', postRoute);
-  app.use('/post/:postId/comment',getPost, commentRoute);
+  app.use('/post/:postId/comment', getPost, commentRoute);
   //app.use('/user',userRoute);
   const port = 4000;
   

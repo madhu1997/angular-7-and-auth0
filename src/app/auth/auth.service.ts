@@ -15,7 +15,7 @@ export class AuthService {
     clientID: 'FM8ECs5V8C5ETJpXqqzxF78WNBe612Dl',
     domain: 'dev-wyw2s199.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:4200/post',
+    redirectUri: 'http://localhost:4200',
     scope: 'openid profile',
     audience: 'https://localhost:4200/api'
   });
@@ -43,9 +43,9 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.localLogin(authResult);
-        this.router.navigate(['/post']);
+        this.router.navigate(['/']);
       } else if (err) {
-        this.router.navigate(['/post']);
+        this.router.navigate(['/']);
         console.log(err);
       }
     });

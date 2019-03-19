@@ -81,6 +81,13 @@ postRoutes.route('/get/:id').get(function (req, res) {
 });
 });
 
+postRoutes.route('/get').get(function (req, res) {
+  user = req.currentUser.id
+  Post.findById({created_by_id:user}, function (err, post){
+      res.json(post);
+});
+});
+
 // Defined edit route
 postRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;

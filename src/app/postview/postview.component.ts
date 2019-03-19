@@ -10,7 +10,6 @@ import { CommentService } from '../comment.service';
 })
 export class PostviewComponent implements OnInit {
   post: any = {};
-  postId: string;
   constructor(private auth: AuthService, private router: Router,private ps: PostService,private route: ActivatedRoute,private cs: CommentService) { 
     auth.handleAuthentication();
   }
@@ -23,23 +22,11 @@ export class PostviewComponent implements OnInit {
     });
   });
   }
-
   deletePost(id) {
     this.ps.deletePost(id).subscribe(res => {
       console.log('Deleted');
       this.router.navigate(['post']);
     });
   }
-  /*deleteComment(id) {
-    this.cs.deleteComment(id).subscribe(res => {
-      console.log('Deleted');
-    });
-  }
-  /*public isAuthenticated(): boolean {
-    // Check whether the current time is past the
-    // access token's expiry time
-    return new Date().getTime() < this._expiresAt;
-  }*/
-
 
 }

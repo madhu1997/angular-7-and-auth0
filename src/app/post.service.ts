@@ -44,6 +44,11 @@ export class PostService {
     .http
     .get(`${this.uri}`);
   }
+  userPosts() {
+    return this
+    .http
+    .get(`${this.uri}/get`);
+  }
   getPost(id) {
     return this
     .http

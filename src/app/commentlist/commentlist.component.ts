@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../comment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+
 
 
 @Component({
@@ -25,9 +26,11 @@ export class CommentlistComponent implements OnInit {
       });
   });
 }
-  /*deleteComment(id) {
-    this.cs.deleteComment(id).subscribe(res => {
-      console.log('Deleted');
-    });
-  }*/
+  deleteComment(id) {
+    this.route.params.subscribe(params => {
+      this.cs.deleteComment(params['postId'],params['id']).subscribe(res => {
+        this.router.navigate(['post/:id']);
+      });
+  });
+}
 }

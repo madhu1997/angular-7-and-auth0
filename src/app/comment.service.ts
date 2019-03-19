@@ -22,12 +22,13 @@ export class CommentService {
            .http
            .get(`http://localhost:4000/post/${postId}/comment`);
   }
-  editComment(id,postId) {
+  editComment(postId,id) {
     return this
             .http
-            .get(`http://localhost:4000/post/${postId}/comment/add/edit/${id}`);
+            .get(`http://localhost:4000/post/${postId}/comment/edit/${id}`);
+            debugger;
     }
-  updateComment(comment, id,postId) {
+  updateComment(comment,postId, id) {
 
     const obj = {
         comment: comment

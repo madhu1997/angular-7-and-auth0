@@ -26,7 +26,7 @@
     </div>
     <div class="list-group">
     <a *ngFor="let post of posts"
-       [routerLink]="['post','get',post._id]"
+       [routerLink]="['post',post._id]"
        class="list-group-item">
     <h2>{{ post.title }}</h2>
     <small class="list-group-item-text">

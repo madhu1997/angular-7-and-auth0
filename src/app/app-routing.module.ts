@@ -8,6 +8,7 @@ import { CommentComponent } from './comment/comment.component';
 import { CommenteditComponent } from './commentedit/commentedit.component';
 import { CommentlistComponent } from './commentlist/commentlist.component';
 import { PostviewComponent } from './postview/postview.component';
+import { MypostComponent } from './mypost/mypost.component';
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: 'post/:id/comment/create', component: CommentComponent},
   { path: 'post/:id/comment/edit/:id',component: CommenteditComponent },
   { path: 'post/:id/comment', component: CommentlistComponent },
-  { path: 'post/get/:id', component : PostviewComponent }
+  { path: 'post/:id', component : PostviewComponent },
+  { path: 'mypost', component : MypostComponent }
+
 ];
 
 @NgModule({
