@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'post/create', component: PostComponent},
   { path: 'post/edit/:id', component: PosteditComponent},
-  { path: 'post', component: PostlistComponent},
+  { path: '', component: PostlistComponent},
   { path: 'post/:id/comment/create', component: CommentComponent},
   { path: 'post/:id/comment/edit/:id',component: CommenteditComponent },
   { path: 'post/:id/comment', component: CommentlistComponent },

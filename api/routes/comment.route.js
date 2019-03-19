@@ -5,6 +5,12 @@ const commentRoutes = express.Router();
 // Require post model in our routes module
 let Comment = require('../models/Comment');
 
+const getPost  = function(req, res, next) {
+  //console.log('Request URL:', req.params.postId)
+  req.postId = req.params.postId;
+  next()
+}  
+
 // Defined store route
 commentRoutes.route('/add').post(function (req, res) {
   let comment = new Comment(req.body);
