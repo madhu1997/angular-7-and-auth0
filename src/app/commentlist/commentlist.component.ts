@@ -11,7 +11,7 @@ import { AuthService } from '../auth/auth.service';
 })
 export class CommentlistComponent implements OnInit {
 
-  comments: any = {};;
+  comments: any = {};
 
   constructor( private route: ActivatedRoute,
     private router: Router,private cs: CommentService, private auth:AuthService) {

@@ -23,6 +23,7 @@ const jwksRsa = require('jwks-rsa'),
     app.use(bodyParser.urlencoded({ extended: true }));
 
     app.use(cors());
+
   const getPost  = function(req, res, next) {
     //console.log('Request URL:', req.params.postId)
     req.postId = req.params.postId;
@@ -60,7 +61,7 @@ const handleUser = function(req, res, next) {
   console.log('Auth0 Access Token', req.auth0AccessToken);
 });*/
 
-    app.use('/post',checkJwt,checkScopes,handleUser, postRoute);
+    app.use('/post',checkJwt,handleUser,checkScopes, postRoute);
     app.use('/post/:postId/comment',getPost, commentRoute);
     //app.use('/user',userRoute);
     const port = 4000;
