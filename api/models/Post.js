@@ -15,6 +15,9 @@ let Post = new Schema({
   },
   created_by_id: {
     type: String, 
+  },
+  created_by_name:{
+    type: String,
   }
 },{
     collection: 'post'

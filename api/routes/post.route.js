@@ -10,9 +10,11 @@ const authRoute = require('../auth0/auth.route');
 // Defined store route
 postRoutes.route('/add').post(authRoute.checkJwt,authRoute.handleUser, function (req, res) {
   let post = new Post(req.body);
-  console.log(post);
+  //console.log(post);
   post.created_by_id = req.currentUser.id;
-  console.log(post.created_by_id);
+  post.created_by_name = req.currentUser.nickname;
+  console.log(post.created_by_name);
+  //console.log(post.created_by_id);
   post.save()
     .then(post => {
       res.status(200).json({'post': 'post in added successfully'});

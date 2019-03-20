@@ -20,7 +20,7 @@ const User = require('../models/User');
 
 
 authRoute.checkJwt = function (req, res,next) {
-  console.log('babjbfskjbkj');
+  //console.log('babjbfskjbkj');
   jwt({
     secret: jwksRsa.expressJwtSecret({
       cache: true,
@@ -39,15 +39,15 @@ authRoute.checkJwt = function (req, res,next) {
 authRoute.handleUser = function (req, res, next) {
   if (req.headers.authorization) {
     var token = req.headers.authorization.split(' ')[1];
-    console.log(token);
+    //console.log(token);
     auth0.getProfile(token, function (err, userInfo) {
       if (err) {
         console.log("failed to retrieve profile", err)
       } else {
         req.currentUser = new User(userInfo);
-        console.log(userInfo);
+        //console.log(userInfo);
         next();
-        console.log(req.currentUser.id);
+        //console.log(req.currentUser.id);
       }
     });
   }

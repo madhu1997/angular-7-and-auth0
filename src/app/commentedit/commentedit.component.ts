@@ -12,6 +12,7 @@ export class CommenteditComponent implements OnInit {
 
   comment: any = {};
   angForm: FormGroup;
+  postId:string;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
