@@ -3,8 +3,6 @@
     <h2>{{ post.title }} </h2>
     <label>Description:</label>
     <p>{{ post.description }}</p>
-  <button (click) = "deletePost(post._id)" *ngIf="auth.isAuthenticated()"class="btn btn-danger">delete</button>
-  <button  class="btn btn-primary" *ngIf="auth.isAuthenticated()" [routerLink]="['/post/edit',post._id]">Edit</button>
 </div>
 </section>
 <div>

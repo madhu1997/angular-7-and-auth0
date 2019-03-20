@@ -38,7 +38,7 @@ export class PosteditComponent implements OnInit {
   updatePost(title, description) {
     this.route.params.subscribe(params => {
       this.ps.updatePost(title.value, description.value, params['id']);
-      this.router.navigate(['post']);
+      this.router.navigate(['mypost']);
     });
   }
 }

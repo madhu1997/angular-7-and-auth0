@@ -58,7 +58,7 @@ export class PostService {
         })
       };
     }
-    debugger;
+    //debugger;
    return this
     .http
     .get(`${this.uri}/get`,httpOptions);
