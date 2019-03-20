@@ -4,59 +4,15 @@ const postRoutes = express.Router();
 
 // Require post model in our routes module
 let Post = require('../models/Post');
-const Auth = require('../auth0/auth.route');
+const authRoute = require('../auth0/auth.route');
 
-
-/*const jwt = require('express-jwt');
-const jwtAuthz = require('express-jwt-authz');
-const request = require("request");
-const jwksRsa = require('jwks-rsa'),
-path = require('path');
-
-
-const AuthenticationClient = require('auth0').AuthenticationClient;
-  
-var auth0 = new AuthenticationClient({
-  domain: 'dev-wyw2s199.auth0.com',
-  clientId: 'FM8ECs5V8C5ETJpXqqzxF78WNBe612Dl',
-  clientSecret: 'VTFIDmRxrZPl8h1Zt0H_mYrP4WRV2ITk0Vb0xUsDOYvhQyyJ3jKX_igb4Z8FpdC4'
-});
-
-const User = require('../models/User');
-
-
-const checkJwt = jwt({
-  secret: jwksRsa.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: "https://dev-wyw2s199.auth0.com/.well-known/jwks.json"
-  }),
-  audience: 'https://localhost:4200/api',
-  issuer: "https://dev-wyw2s199.auth0.com/",
-  algorithms: ['RS256']
-});*/
-
-
-const handleUser = function(req, res, next) {
-  if (req.headers.authorization) {
-    var token = new Auth(req.headers.authorization.split(' ')[1]);
-   console.log (token);
-   /* auth0.getProfile(token, function (err, userInfo) {
-      if(err) {
-        console.log("failed to retrieve profile", err)
-      } else {
-        req.currentUser = new User(userInfo);
-        next();
-      }
-    });
-  } */
-}
 
 // Defined store route
-postRoutes.route('/add').post(authRoute.checkJwt,handleUser, function (req, res) {
+postRoutes.route('/add').post(authRoute.checkJwt,authRoute.handleUser, function (req, res) {
   let post = new Post(req.body);
+  console.log(post);
   post.created_by_id = req.currentUser.id;
+  console.log(post.created_by_id);
   post.save()
     .then(post => {
       res.status(200).json({'post': 'post in added successfully'});
@@ -84,7 +40,7 @@ postRoutes.route('/get/:id').get(function (req, res) {
 });
 });
 
-postRoutes.route('/get').get(handleUser,function (req, res) {
+postRoutes.route('/get').get(authRoute.handleUser,function (req, res) {
   user = req.currentUser.id
   //console.log(user);
   Post.find({created_by_id:user}, function (err, post){
@@ -126,6 +82,6 @@ postRoutes.route('/delete/:id').get(function (req, res) {
         else res.json('Successfully removed');
     });
 });
-}
+
 
 module.exports = postRoutes;
