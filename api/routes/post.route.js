@@ -81,10 +81,12 @@ postRoutes.route('/get/:id').get(function (req, res) {
 });
 });
 
-postRoutes.route('/get').get(function (req, res) {
+postRoutes.route('/get').get(handleUser,function (req, res) {
   user = req.currentUser.id
-  Post.findById({created_by_id:user}, function (err, post){
+  console.log(user);
+  Post.find({created_by_id:user}, function (err, post){
       res.json(post);
+      console.log(post);
 });
 });
 

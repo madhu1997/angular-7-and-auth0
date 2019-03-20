@@ -36,7 +36,7 @@ export class PostService {
     
     this.http.post(`${this.uri}/add`, obj, httpOptions)
     .subscribe(res => console.log('Done'));
-    debugger;
+    //debugger;
   }
   
   getPosts() {
@@ -45,9 +45,24 @@ export class PostService {
     .get(`${this.uri}`);
   }
   userPosts() {
-    return this
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
+    };
+    if (this.auth.isAuthenticated()) {
+      httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'Bearer ' + this.auth.accessToken
+        })
+      };
+    }
+    debugger;
+   return this
     .http
-    .get(`${this.uri}/get`);
+    .get(`${this.uri}/get`,httpOptions);
+    //debugger;
   }
   getPost(id) {
     return this
@@ -66,7 +81,7 @@ export class PostService {
       description: description
     };
     console.log(obj);
-    debugger;
+    //debugger;
     this
     .http
     .post(`${this.uri}/update/${id}`, obj)
