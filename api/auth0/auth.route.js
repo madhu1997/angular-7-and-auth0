@@ -19,7 +19,9 @@ var auth0 = new AuthenticationClient({
 const User = require('../models/User');
 
 
-const checkJwt = jwt({
+authRoute.checkJwt(function(req,res) {
+  console.log(babjbfskjbkj);
+  jwt({
   secret: jwksRsa.expressJwtSecret({
     cache: true,
     rateLimit: true,
@@ -30,7 +32,7 @@ const checkJwt = jwt({
   issuer: "https://dev-wyw2s199.auth0.com/",
   algorithms: ['RS256']
 });
-
+});
 class Auth{
   constructor({token}) {
     this.token = token;

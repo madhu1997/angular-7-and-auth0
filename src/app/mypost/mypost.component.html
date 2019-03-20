@@ -10,10 +10,9 @@
         Posted on
         <span>{{post.updated_at  | date }}</span>
         by
-        <span>{{ post.user }}</span>
-        <span *ngIf="!post.user"> {{ post.created_by_id }}</span>
+        <span> {{ post.created_by_id }}</span>
     </small>
-    <button (click) = "deletePost(post._id)" *ngIf="auth.isAuthenticated()"class="btn btn-danger">delete</button>
-  <button  class="btn btn-primary" *ngIf="auth.isAuthenticated()" [routerLink]="['/post/edit',post._id]">Edit</button>
+    <a style="float: right"(click) = "deletePost(post._id)" class="btn btn-danger">delete</a>
+    <a style="float: right"class="btn btn-primary"  [routerLink]="['/post/edit',post._id]">Edit</a>
     </a>
     </div>

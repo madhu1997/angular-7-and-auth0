@@ -10,7 +10,7 @@ import { CommentService } from '../comment.service';
 })
 export class PostviewComponent implements OnInit {
   post: any = {};
-  constructor(private auth: AuthService, private router: Router,private ps: PostService,private route: ActivatedRoute,private cs: CommentService) { 
+  constructor(private auth: AuthService ,private ps: PostService,private route: ActivatedRoute,private cs: CommentService) { 
     auth.handleAuthentication();
   }
 
@@ -22,11 +22,6 @@ export class PostviewComponent implements OnInit {
     });
   });
   }
-  deletePost(id) {
-    this.ps.deletePost(id).subscribe(res => {
-      console.log('Deleted');
-      this.router.navigate(['post']);
-    });
-  }
+  
 
 }
