@@ -15,10 +15,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     if (this.auth.userProfile) {
       this.profile = this.auth.userProfile;
+      //debugger;
     } else {
       this.auth.getProfile((err, profile) => {
         this.profile = profile;
-        debugger;
+        //debugger;
       });
     }
   }

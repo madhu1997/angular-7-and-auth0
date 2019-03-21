@@ -23,10 +23,11 @@ export class CommentService {
            .get(`http://localhost:4000/post/${postId}/comment`);
   }
   editComment(postId,id) {
+    debugger;
     return this
             .http
             .get(`http://localhost:4000/post/${postId}/comment/edit/${id}`);
-            debugger;
+            
     }
   updateComment(comment,postId, id) {
 

@@ -3,8 +3,7 @@
         <h5>comments</h5>
         </div>
         <div class="list-group">
-        <a *ngFor="let comment of comments"
-           class="list-group-item">
+        <a *ngFor="let comment of comments" class="list-group-item">
         <p>{{ comment.comment }}</p>
         <a style="float:right" *ngIf="auth.isAuthenticated()"(click) = "deleteComment(comment._id)"class="btn btn-danger">delete</a>
         <a style="float:right" *ngIf="auth.isAuthenticated()"class="btn btn-primary" [routerLink]="['comment','edit',comment._id]" >Edit</a>

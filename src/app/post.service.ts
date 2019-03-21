@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { Observable } from 'rxjs';
+import Post from './post';
 
 
 
@@ -39,10 +40,10 @@ export class PostService {
     //debugger;
   }
   
-  getPosts() {
+  getPosts() : Observable<Post>{
     return this
     .http
-    .get(`${this.uri}`);
+    .get<Post>(`${this.uri}`);
   }
   userPosts() {
     var httpOptions = {

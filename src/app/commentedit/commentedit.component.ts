@@ -12,7 +12,7 @@ export class CommenteditComponent implements OnInit {
 
   comment: any = {};
   angForm: FormGroup;
-  postId:string;
+  postId: any= {};
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -38,7 +38,7 @@ export class CommenteditComponent implements OnInit {
   }
   updateComment(comment) {
     this.route.params.subscribe(params => {
-      this.cs.updateComment(comment.value,params['postId'],params['id']);
+      this.cs.updateComment(comment.value,'',params['id']);
       this.router.navigate(['comment']);
     });
   }
