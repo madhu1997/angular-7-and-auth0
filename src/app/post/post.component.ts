@@ -25,7 +25,7 @@ export class PostComponent implements OnInit {
   addPost(title, description) {
     this.ps.addPost(title.value, description.value);
     this.angForm.reset();
-    this.router.navigate(['']);
+    this.router.navigate(['mypost']);
   }
 
 

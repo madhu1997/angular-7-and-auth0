@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { Observable } from 'rxjs';
-import Post from './post';
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +12,7 @@ export class PostService {
   
   constructor(private http: HttpClient, private auth: AuthService) { }
   test = this.auth.isAuthenticated();
+
   
   addPost(title,description) {
     var httpOptions = {
@@ -40,10 +38,10 @@ export class PostService {
     //debugger;
   }
   
-  getPosts() : Observable<Post>{
+  getPosts() {
     return this
     .http
-    .get<Post>(`${this.uri}`);
+    .get(`${this.uri}`);
   }
   userPosts() {
     var httpOptions = {

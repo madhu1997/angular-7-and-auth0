@@ -10,7 +10,9 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
+
   addComment(comment,postId) {
+    debugger;
     const obj = {
      comment: comment
     };

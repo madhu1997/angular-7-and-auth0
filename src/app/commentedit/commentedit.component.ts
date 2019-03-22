@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommentService } from '../comment.service';
 
 @Component({
@@ -12,33 +12,35 @@ export class CommenteditComponent implements OnInit {
 
   comment: any = {};
   angForm: FormGroup;
-  postId: any= {};
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private cs: CommentService,
     private fb: FormBuilder) {
-      this.createForm();
- }
+    this.createForm();
+    console.log(this.route.snapshot.params.id)
+      debugger;
+  }
 
   createForm() {
     this.angForm = this.fb.group({
-        comment: ['', Validators.required ]
-      });
-    }
+      comment: ['', Validators.required]
+    });
+  }
 
 
   ngOnInit() {
+    debugger;
     this.route.params.subscribe(params => {
-      this.cs.editComment(params['postId'],params['id']).subscribe(res => {
+      this.cs.editComment(params['postId'], params['id']).subscribe(res => {
         this.comment = res;
-        //debugger;
+
+      });
     });
-  });
   }
   updateComment(comment) {
     this.route.params.subscribe(params => {
-      this.cs.updateComment(comment.value,'',params['id']);
+      this.cs.updateComment(comment.value, '', params['id']);
       this.router.navigate(['comment']);
     });
   }
