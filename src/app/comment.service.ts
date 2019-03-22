@@ -41,9 +41,9 @@ export class CommentService {
       .post(`http://localhost:4000/post/${postId}/comment/update/${id}`, obj)
       .subscribe(res => console.log('Done'));
   }
-  deleteComment(id,postId) {
+  deleteComment(postId,id) {
     return this
               .http
-              .get(`http://localhost:4000/post/${postId}/comment/${id}`);
+              .get(`http://localhost:4000/post/${postId}/comment/delete/${id}`);
   }
 }

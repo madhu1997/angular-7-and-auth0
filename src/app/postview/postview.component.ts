@@ -21,9 +21,8 @@ export class PostviewComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.ps.getPost(params['id']).subscribe(res => {
         this.post = res;
-        this.cs.addComment(this.post._id);
+        //this.cs.addComment(this.post._id);
         console.log(this.post._id);
-        debugger;
     });
   });
   

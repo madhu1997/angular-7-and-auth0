@@ -19,7 +19,7 @@ import { CommentlistComponent } from './commentlist/commentlist.component';
 import { CommentService } from './comment.service';
 import { CommentviewComponent } from './commentview/commentview.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatExpansionModule } from '@angular/material';
+import { MatExpansionModule, MatMenuItem, MatIcon, MatMenu, MatMenuTrigger, MatRipple } from '@angular/material';
 import { MypostComponent } from './mypost/mypost.component';
 
 @NgModule({
@@ -35,7 +35,12 @@ import { MypostComponent } from './mypost/mypost.component';
     CommenteditComponent,
     CommentlistComponent,
     CommentviewComponent,
-    MypostComponent
+    MypostComponent,
+    MatMenuItem, 
+    MatIcon,
+    MatMenu,
+    MatMenuTrigger,
+    MatRipple
   ],
   imports: [
     BrowserModule,

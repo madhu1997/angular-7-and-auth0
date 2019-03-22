@@ -14,11 +14,14 @@ export class CommentlistComponent implements OnInit {
 
   comments: any = {};
 
+
   constructor( private route: ActivatedRoute,
     private router: Router,private cs: CommentService, private auth:AuthService) {
       auth.handleAuthentication();
+      
+      //debugger;
      }
-
+     
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.cs.getComments(params['id']).subscribe(res => {
@@ -27,9 +30,10 @@ export class CommentlistComponent implements OnInit {
   });
 }
   deleteComment(id) {
+    const postid: string =this.route.snapshot.params.id;
     this.route.params.subscribe(params => {
-      this.cs.deleteComment(params['postId'],params['id']).subscribe(res => {
-        this.router.navigate(['post/:id']);
+      this.cs.deleteComment(postid,id).subscribe(res => {
+        console.log('Deleted');
       });
   });
 }
