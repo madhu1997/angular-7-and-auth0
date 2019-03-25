@@ -18,8 +18,7 @@ export class CommenteditComponent implements OnInit {
     private cs: CommentService,
     private fb: FormBuilder) {
     this.createForm();
-    console.log(this.route.snapshot.params.id)
-    debugger;
+    //console.log(this.route.snapshot.params.id)
   }
 
   createForm() {
@@ -29,21 +28,17 @@ export class CommenteditComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-    
+  ngOnInit() {    
     this.route.params.subscribe(params => {
-      const postid: string =this.route.snapshot.params.id;
-      debugger;
-      this.cs.editComment(postid, params['id']).subscribe(res => {
+      this.cs.editComment(params.postId, params.id).subscribe(res => {
         this.comment = res;
-
       });
     });
   }
   updateComment(comment) {
-    const postid: string =this.route.snapshot.params.id;
+    //debugger;
     this.route.params.subscribe(params => {
-      this.cs.updateComment(comment.value,postid,params['id']);
+      this.cs.updateComment(comment, params.postId, params.id);
       this.router.navigate(['comment']);
     });
   }

@@ -12,7 +12,7 @@ export class CommentService {
 
 
   addComment(comment,postId) {
-    debugger;
+    //debugger;
     const obj = {
      comment: comment
     };
@@ -25,7 +25,7 @@ export class CommentService {
            .get(`http://localhost:4000/post/${postId}/comment`);
   }
   editComment(postId,id) {
-    debugger;
+    //debugger;
     return this
             .http
             .get(`http://localhost:4000/post/${postId}/comment/edit/${id}`);

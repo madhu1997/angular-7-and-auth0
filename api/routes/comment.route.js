@@ -42,8 +42,10 @@ commentRoutes.route('/edit/:id').get(function (req, res) {
 });
 
 //  Defined update route
-commentRoutes.route('/update/:id').post(function (req, res) {
-    Comment.findById(req.params.id, function(err, next, comment) {
+commentRoutes.route('/update/:id').post(function (req, res,next) {
+    console.log(req.params.id);
+    console.log(req.body.comment);
+    Comment.findById(req.params.id, function(err, comment) {
     if (!comment)
       return next(new Error('Could not load Document'));
     else {

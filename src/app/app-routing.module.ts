@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'post/edit/:id', component: PosteditComponent},
   { path: '', component: PostlistComponent},
   { path: 'post/:id/comment/create', component: CommentComponent},
-  { path: 'post/:id/comment/edit/:id',component: CommenteditComponent },
+  { path: 'post/:postId/comment/edit/:id',component: CommenteditComponent },
   { path: 'post/:id/comment', component: CommentlistComponent },
   { path: 'post/:id', component : PostviewComponent },
   { path: 'mypost', component : MypostComponent }
