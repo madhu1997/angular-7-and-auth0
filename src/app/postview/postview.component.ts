@@ -22,7 +22,7 @@ export class PostviewComponent implements OnInit {
       this.ps.getPost(params['id']).subscribe(res => {
         this.post = res;
         //this.cs.addComment(this.post._id);
-        console.log(this.post._id);
+        //console.log(this.post._id);
     });
   });
   
